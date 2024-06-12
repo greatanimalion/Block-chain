@@ -1,6 +1,6 @@
 {
+  "name": "Block-chain",
   "private": true,
-  "author": "大动物 <15294745236@163.com>",
   "scripts": {
     "build": "max build",
     "dev": "max dev",
