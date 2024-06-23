@@ -9,9 +9,9 @@ export async function getInitialState(): Promise<{ name: string }> {
 
 export const layout = () => {
   return {
-    logo,
+    logo: logo,
     menu: {
-      locale: false,
+      locale: true,
     },
   };
 };
