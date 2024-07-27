@@ -50,6 +50,16 @@ export default defineConfig({
       component: './Table',
     },
     {
+      name: ' 商品管理',
+      path: '/goods',
+      component: './Goods',
+    },
+    {
+      name: '用户管理',
+      path: '/user',
+      component: './Users',
+    },
+    {
       name: '404',
       path: '/*',
       component: './404',

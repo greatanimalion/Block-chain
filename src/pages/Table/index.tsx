@@ -90,7 +90,7 @@ const TableList: React.FC<unknown> = () => {
   const actionRef = useRef<ActionType>();
   const [row, setRow] = useState<API.UserInfo>();
   const [selectedRowsState, setSelectedRows] = useState<API.UserInfo[]>([]);
-  const columns: ProDescriptionsItemProps<API.UserInfo>[] = [
+  const columns: (ProDescriptionsItemProps<API.UserInfo>&{tip?: string})[] = [
     {
       title: '名称',
       dataIndex: 'name',
