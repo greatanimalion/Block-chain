@@ -1,4 +1,3 @@
-import services from '@/services/demo';
 import {
   ActionType,
   FooterToolbar,
@@ -6,7 +5,7 @@ import {
   ProDescriptionsItemProps,
   ProTable,
 } from '@ant-design/pro-components';
-import { Button, Divider, message } from 'antd';
+import { Button, Divider } from 'antd';
 import React, { useRef, useState } from 'react';
 import { getUserList } from '@/services/demo/UserList';
 

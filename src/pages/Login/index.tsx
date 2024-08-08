@@ -1,14 +1,19 @@
 import  './index.css'
+import serveice from '@/services/demo/index';
+
 declare module 'react' {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
     text?: string;
   }
 }
-export default function Login() {
+export default  function Login() {
   const login=(e:any)=>{
     e.preventDefault()
     window.location.href="/home"
   }
+serveice.goods().then(res=>{
+  console.log(res)
+})
   return (
     <div className="login">
     <div className="loginBox" >

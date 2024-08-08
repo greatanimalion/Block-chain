@@ -24,17 +24,22 @@ export const antd: RuntimeAntdConfig = (memo:any) => {
 };
 
 
-export async function getInitialState(): Promise<{ name: string }> {  
-  return { name: '农产品溯源' };
+// src/app.ts
+export function getInitialState() {
+  return {
+    name: 'Serati Ma',
+    avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
+  };
 }
 
 export const layout = () => {
   return {
     logo: logo,
+    // favicons:'https://s.cn.bing.net/th?id=OJ.WNm0NiYXMw3UXA&qlt=80&o=6&dpr=1.8&pid=SANGAM',
     rightContentRender: () => <RightContentRender />,
     // footerRender: () =><h1>111</h1>,
     menu: {
-      locale: false,
+      locale: true,
     },
   };
 };
