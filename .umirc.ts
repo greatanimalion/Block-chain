@@ -44,6 +44,7 @@ export default defineConfig({
       name: '权限演示',
       path: '/access',
       component: './Access',
+      access:'super'
     },
     {
       name: ' CRUD 示例',

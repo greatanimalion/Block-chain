@@ -7,9 +7,10 @@ import logo from './assets/logo.png';
 import { RuntimeAntdConfig } from 'umi';
 import { theme } from 'antd';
 import RightContentRender from './components/layout/RightContentRender';
-
+import FooterRender from './components/layout/FooterRender';
+// import { WaterMark } from '@ant-design/pro-components';
 type RuntimeAntdConfig = (memo: any) => any;
-export const antd: RuntimeAntdConfig = (memo:any) => {
+export const antd: RuntimeAntdConfig = (memo: any) => {
   memo.theme ??= {};
   memo.theme.algorithm = theme.defaultAlgorithm; // 配置 antd5 的预设 dark 算法
 
@@ -27,7 +28,7 @@ export const antd: RuntimeAntdConfig = (memo:any) => {
 // src/app.ts
 export function getInitialState() {
   return {
-    name: 'Serati Ma',
+    name: 'LB',
     avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
   };
 }
@@ -37,9 +38,16 @@ export const layout = () => {
     logo: logo,
     // favicons:'https://s.cn.bing.net/th?id=OJ.WNm0NiYXMw3UXA&qlt=80&o=6&dpr=1.8&pid=SANGAM',
     rightContentRender: () => <RightContentRender />,
+    footerRender: () => <FooterRender />,
+    layout: 'mix',
+    splitMenus: true,
+    // loading:true,
+    // waterMarkProps: () => (<WaterMark content={'LB'}><div style={{ height: 500 }} /></WaterMark>),
+    fixedHeader: false,
+    fixSiderbar: true,
     // footerRender: () =><h1>111</h1>,
     menu: {
-      locale: true,
+      locale: false,
     },
   };
 };

@@ -7,7 +7,7 @@ export default function Page() {
   // const antdConfig = useAntdConfig();
   return (
     <Layout>
-      <Space>
+      <Space style={{ margin: 10 }}>
         切换主题
         <Switch
           onChange={(data) => {
