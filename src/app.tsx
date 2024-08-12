@@ -36,10 +36,10 @@ export async function getInitialState():Promise<User> {
         roles: '',
       } as User
   }
-  const user=await getUserInfo()
+  const user=(await getUserInfo()).data!
   return {
-      name: user.data.name,
-      roles: user.data.roles,
+      name: user.name,
+      roles: user.roles,
     }
   
 }

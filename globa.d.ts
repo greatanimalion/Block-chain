@@ -6,6 +6,6 @@ declare namespace API {
         id?: number;
         name: string;
         password?: string;
-        role: string;
+        roles: string;
     }
 }

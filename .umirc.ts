@@ -41,13 +41,13 @@ export default defineConfig({
       component: './Home',
     },
     {
-      name: '权限演示',
+      name: '特殊工艺',
       path: '/access',
       component: './Access',
       access:'super'
     },
     {
-      name: ' CRUD 示例',
+      name: '货物示例',
       path: '/table',
       component: './Table',
     },
