@@ -1,6 +1,7 @@
 import {request} from "@umijs/max"
-export  async function getUserInfo(account: any,password: any) {
-
+import {res} from "@/types/respond"
+//登录
+export  async function login(account: any,password: any) {
   console.log('getUserInfo', account, password)
   return request('/api/user', {
     method: 'POST',
@@ -8,5 +9,11 @@ export  async function getUserInfo(account: any,password: any) {
         account,
         password
     },
+  });
+}
+//获取用户信息
+export  async function getUserInfo(){
+  return request<res<API.UserInfo>>('/api/user/info',{
+    method: 'GET'
   });
 }

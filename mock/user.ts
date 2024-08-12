@@ -8,8 +8,7 @@ export default {
                 message: "success",
                 data: {
                     name: "admin",
-                    avatar: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
-                    roles: ["admin"]
+                    roles: "admin"
                 }
             })
         } else {
@@ -19,5 +18,15 @@ export default {
             })
         }
 
+    },
+    "GET /api/user/info": (req: any, res: any) => {
+        res.json({
+            code: 200,
+            message: "success",
+            data: {
+                name: "LB",
+                roles: "admin"
+            }
+        })
     }
 }

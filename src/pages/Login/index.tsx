@@ -1,5 +1,6 @@
 import './index.css'
-import { getUserInfo } from '@/services/user/getUserInfro';
+import { login } from '@/services/user/getUserInfro';
+import { useModel } from '@umijs/max';
 import { message } from 'antd';
 import { useState } from "react";
 declare module 'react' {
@@ -8,13 +9,15 @@ declare module 'react' {
   }
 }
 export default function Login() {
+  const {initialState,setInitialState}=useModel('@@initialState')
   const account = useState("")
   const password = useState("")
-  const login = (e: any) => {
+  const loginA = (e: any) => {
     e.preventDefault()
-    getUserInfo(account[0], password[0]).then(res => {
+    login(account[0], password[0]).then(async res => {
       console.log(res)
       if (res.code === 200) {
+       await setInitialState(res.data)
         window.location.href = "/home"
       }
       else if (res.code === 400)message.error("用户名或密码错误")
@@ -37,7 +40,7 @@ export default function Login() {
             <input type="password" required id="password" onChange={(e) => { password[1](e.target.value) }} />
             <label htmlFor="password">密码</label>
           </div>
-          <button className="btn" type="submit" onClick={login}>登录
+          <button className="btn" type="submit" onClick={loginA}>登录
             <span></span>
             <span></span>
             <span></span>

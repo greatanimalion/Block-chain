@@ -55,6 +55,24 @@ export default defineConfig({
       name: ' 商品管理',
       path: '/goods',
       component: './Goods',
+      routes: [
+        {
+         
+          path: '/goods/all',
+          component: './Goods/AllGoods',
+          hideInMenu: true,
+        },
+        {
+          name: '全部商品',
+          path: '/goods/addGoods',
+          component: './Goods/AddGoods',
+        },
+        {
+          name: '溯源商品',
+          path: '/goods/address',
+          component: './Goods/Map',
+        },
+      ],
     },
     {
       name: '用户管理',

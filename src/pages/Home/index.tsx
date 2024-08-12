@@ -4,8 +4,11 @@ import { PageContainer } from '@ant-design/pro-components';
 import { useModel } from '@umijs/max';
 import styles from './index.less';
 import { Button } from 'antd';
-;
+
 const HomePage: React.FC = () => {
+  const userInfo =useModel('@@initialState').initialState!
+
+  
   const { name } = useModel('global');
   const {counter, increment} = useModel('counter');
   return (
@@ -14,6 +17,7 @@ const HomePage: React.FC = () => {
         <Guide name={trim(name)} />
         <Button>{counter}</Button>
         <Button onClick={increment}>Increment</Button>
+        <span>current user: {userInfo.name}</span>
       </div>
     </PageContainer>
   );
