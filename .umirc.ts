@@ -39,23 +39,31 @@ export default defineConfig({
       name: '首页',
       path: '/home',
       component: './Home',
+      icon: 'home',
     },
     {
       name: '特殊工艺',
       path: '/access',
       component: './Access',
-      access:'super'
+      access:'super',
+      icon: 'lock',
     },
     {
       name: '货物示例',
       path: '/table',
       component: './Table',
+      icon: 'LineChart',
     },
     {
       name: ' 商品管理',
       path: '/goods',
-      component: './Goods',
+      // component: './Goods',
+      icon: 'table',
       routes: [
+        {
+          path: '/goods',
+          redirect: '/goods/all',
+        },
         {
           name: '全部商品',
           path: '/goods/all',
@@ -80,6 +88,7 @@ export default defineConfig({
       name: '用户管理',
       path: '/user',
       component: './Users',
+      icon: 'user',
     },
     {
       name: '404',
