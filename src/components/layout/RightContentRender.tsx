@@ -52,7 +52,7 @@ function content() {
 }
 export default function Settings() {
   return <>
-    <Popover placement="rightBottom" title={"设置"} content={content}>
+    <Popover placement="bottom" title={"设置"} content={content}>
       <SettingOutlined style={{ fontSize: 24, cursor: 'pointer', margin: 10 }} />
     </Popover>
 
