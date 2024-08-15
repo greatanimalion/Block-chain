@@ -57,15 +57,17 @@ export default defineConfig({
       component: './Goods',
       routes: [
         {
-         
+          name: '全部商品',
           path: '/goods/all',
           component: './Goods/AllGoods',
-          hideInMenu: true,
-        },
-        {
-          name: '全部商品',
-          path: '/goods/addGoods',
-          component: './Goods/AddGoods',
+          routes:[
+            {
+              component: './Goods/Detail',
+              path: '/goods/all/detail/:id',
+              name: '商品详情',
+              hideInMenu: true,
+            }
+          ]
         },
         {
           name: '溯源商品',

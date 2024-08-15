@@ -48,18 +48,30 @@ export const layout = () => {
   return {
     logo: logo,
     // favicons:'https://s.cn.bing.net/th?id=OJ.WNm0NiYXMw3UXA&qlt=80&o=6&dpr=1.8&pid=SANGAM',
-    rightContentRender: () => <RightContentRender />,
+    actionsRender: () => [<RightContentRender />],
+    // avatarProps: {
+    //   src: initialState?.currentUser?.avatar,
+    //   title: <AvatarName />,
+    //   render: (_, avatarChildren) => {
+    //     return <AvatarDropdown>{avatarChildren}</AvatarDropdown>;
+    //   },
+    // },
     footerRender: () => <FooterRender />,
-    layout: 'side',
+    // layout: 'side',
     // splitMenus: true,
     // loading:true,
+    menuHeaderRender: undefined,
     waterMarkProps: { context: 'LB' },
-    fixedHeader: false,
-    fixSiderbar: true,
-    // footerRender: () =><h1>111</h1>,
     menu: {
       locale: false,
       type: 'sub'
     },
+    actionRender: () => <><h1>actionRender</h1></>,
+    
+    layout: 'mix',
+    contentWidth: 'Fluid',
+    fixedHeader: false,
+    fixSiderbar: true,
+    colorWeak: false,
   };
 };
