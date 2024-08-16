@@ -8,4 +8,11 @@ declare namespace API {
         password?: string;
         roles: string;
     }
+    export type Goods={
+        id: number;
+        name: string;
+        value: number;
+        type: string;
+        time: string;
+      }
 }

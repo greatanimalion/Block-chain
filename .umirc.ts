@@ -1,5 +1,5 @@
 import { defineConfig } from '@umijs/max';
-const logo ='https://s.cn.bing.net/th?id=OJ.WNm0NiYXMw3UXA&qlt=80&o=6&dpr=1.8&pid=SANGAM';
+const logo = 'https://s.cn.bing.net/th?id=OJ.WNm0NiYXMw3UXA&qlt=80&o=6&dpr=1.8&pid=SANGAM';
 export default defineConfig({
   antd: {
     // compact: true,紧凑主题
@@ -45,7 +45,7 @@ export default defineConfig({
       name: '特殊工艺',
       path: '/access',
       component: './Access',
-      access:'super',
+      access: 'super',
       icon: 'lock',
     },
     {
@@ -57,7 +57,6 @@ export default defineConfig({
     {
       name: ' 商品管理',
       path: '/goods',
-      // component: './Goods',
       icon: 'table',
       routes: [
         {
@@ -67,8 +66,11 @@ export default defineConfig({
         {
           name: '全部商品',
           path: '/goods/all',
-          component: './Goods/AllGoods',
-          routes:[
+          routes: [
+            {
+              path: '/goods/all',
+              component: './Goods/AllGoods',
+            },
             {
               component: './Goods/Detail',
               path: '/goods/all/detail/:id',
@@ -94,7 +96,7 @@ export default defineConfig({
       name: '404',
       path: '/*',
       component: './404',
-      layout:false
+      layout: false
     },
   ],
   npmClient: 'pnpm',
