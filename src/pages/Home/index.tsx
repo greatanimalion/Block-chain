@@ -16,8 +16,8 @@ const HomePage: React.FC = () => {
       <div className={styles.container}>
         <Guide name={trim(name)} />
         <Button>{counter}</Button>
-        <Button onClick={increment}>Increment</Button>
-        <span>current user: {userInfo.name}</span>
+        {/* <Button onClick={increment}>Increment</Button> */}
+       
       </div>
     </PageContainer>
   );
