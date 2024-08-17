@@ -39,16 +39,13 @@ export default function AllGoods() {
         const hide = message.loading('正在删除');
         if (!selectedRows) return true;
         try {
-            //   await deleteUser({
-            //     userId: selectedRows.find((row) => row.id)?.id || '',
-            //   });
-            hide();
+           setTimeout(hide,1000);
+           
             message.success('删除成功，即将刷新');
             return true;
         } catch (error) {
             hide();
             message.error('删除失败，请重试');
-
         }
     }
     return (
@@ -82,7 +79,7 @@ export default function AllGoods() {
                 }}
                 columns={columns}
                 rowSelection={{
-                    // onChange: (_, selectedRows) => setSelectedRows(selectedRows),
+                    onChange: (_, selectedRows) => setSelectedRows(selectedRows),
                 }}
             />
             {selectedRowsState?.length > 0 && (
