@@ -1,4 +1,4 @@
-import './index.css'
+import styles from './index.module.css'
 import { login } from '@/services/user/getUserInfro';
 import { useModel } from '@umijs/max';
 import { message } from 'antd';
@@ -28,19 +28,19 @@ export default function Login() {
   //   console.log(res)
   // })
   return (
-    <div className="login" style={{zIndex:-1}}>
-      <div className="loginBox" >
+    <div className={styles.login} style={{zIndex:-1}}>
+      <div className={styles.loginBox} >
         <h2 >Login</h2>
         <form>
-          <div className="item">
+          <div className={styles.item}>
             <input type="text" required id="account" onChange={(e) => { account[1](e.target.value) }} />
             <label htmlFor="account">用户名</label>
           </div>
-          <div className="item">
+          <div className={styles.item}>
             <input type="password" required id="password" onChange={(e) => { password[1](e.target.value) }} />
             <label htmlFor="password">密码</label>
           </div>
-          <button className="btn" type="submit" onClick={loginA}>登录
+          <button className={styles.btn} type="submit" onClick={loginA}>登录
             <span></span>
             <span></span>
             <span></span>

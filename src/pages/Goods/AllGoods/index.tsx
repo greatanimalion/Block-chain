@@ -1,14 +1,23 @@
 import { Link } from "@umijs/max";
 import server from "@/services/demo/index";
-import { ActionType, FooterToolbar, PageContainer, ProDescriptionsItemProps, ProTable } from "@ant-design/pro-components";
-import { Button, Drawer, message } from "antd";
+import { ActionType, FooterToolbar, PageContainer, ProDescriptionsItemProps, ProTable, WaterMark } from "@ant-design/pro-components";
+import { Button, message } from "antd";
 import { useRef, useState } from "react";
+import { useModel } from "@umijs/max";
 export default function AllGoods() {
     const columns: (ProDescriptionsItemProps<API.Goods>)[] = [
         {
-            title: '昵称',
+            title: 'id',
             dataIndex: 'id',
-            valueType: 'text',
+            key: 'id',
+            formItemProps: {
+                rules: [
+                  {
+                    required: true,
+                    message: '名称为必填项',
+                  },
+                ],
+              },
         }, {
             title: '名称',
             dataIndex: 'name',
@@ -16,13 +25,16 @@ export default function AllGoods() {
         }, {
             title: '价格',
             dataIndex: 'value',
+            hideInSearch: true,
             valueType: 'money',
         }, {
             title: '类型',
             dataIndex: 'type',
+            hideInSearch: true,
         }, {
             title: '时间',
             dataIndex: 'time',
+            hideInSearch: true,
         },
         {
             title: '操作',
@@ -40,7 +52,6 @@ export default function AllGoods() {
         if (!selectedRows) return true;
         try {
            setTimeout(hide,1000);
-           
             message.success('删除成功，即将刷新');
             return true;
         } catch (error) {
@@ -48,17 +59,16 @@ export default function AllGoods() {
             message.error('删除失败，请重试');
         }
     }
+    const userInfo =useModel('@@initialState').initialState!
     return (
         <PageContainer>
-            {/* <div>
-                <h1>All Goods</h1>
-                <Link to="/goods/all/detail/1">Go to list page</Link>
-            </div> */}
-            <ProTable<API.Goods>
+              <WaterMark content={userInfo.name} >
+                  <ProTable<API.Goods>
                 headerTitle="查询表格"
                 actionRef={actionRef}
-                rowKey="id"
+                rowKey='id'
                 search={{
+                    defaultCollapsed: false,
                     labelWidth: 120,
                 }}
                 toolBarRender={() => [
@@ -70,18 +80,22 @@ export default function AllGoods() {
                         新建
                     </Button>,
                 ]}
-                request={async (params, sorter, filter) => {
+                // @ts-ignore
+                request={async (params, sort, filter) => {
                     const { data, success } = await server.goods();
                     return {
                         data: data?.list || [],
                         success,
                     };
                 }}
+                //@ts-ignore
                 columns={columns}
                 rowSelection={{
                     onChange: (_, selectedRows) => setSelectedRows(selectedRows),
                 }}
             />
+              </WaterMark>
+          
             {selectedRowsState?.length > 0 && (
                 <FooterToolbar
                     extra={

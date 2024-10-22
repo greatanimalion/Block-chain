@@ -27,7 +27,7 @@ const Page: React.FC = () => {
   return (
     <PageContainer title="Line Chart">
       <Line {...config} />
-      <Outlet />
+      
     </PageContainer>
   )
 

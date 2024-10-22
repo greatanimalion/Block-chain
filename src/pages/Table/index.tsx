@@ -42,11 +42,14 @@ const handleUpdate = async (fields: FormValueType) => {
   try {
     await modifyUser(
       {
+        // @ts-ignore
         userId: fields.id || '',
       },
       {
         name: fields.name || '',
+        //   @ts-ignore
         nickName: fields.nickName || '',
+        //   @ts-ignore
         email: fields.email || '',
       },
     );
@@ -70,6 +73,7 @@ const handleRemove = async (selectedRows: API.UserInfo[]) => {
   if (!selectedRows) return true;
   try {
     await deleteUser({
+      // @ts-ignore
       userId: selectedRows.find((row) => row.id)?.id || '',
     });
     hide();
@@ -112,7 +116,6 @@ const TableList: React.FC<unknown> = () => {
     {
       title: '性别',
       dataIndex: 'gender',
-      hideInForm: true,
       valueEnum: {
         0: { text: '男', status: 'MALE' },
         1: { text: '女', status: 'FEMALE' },
@@ -142,7 +145,7 @@ const TableList: React.FC<unknown> = () => {
   return (
     <PageContainer
       header={{
-        title: 'CRUD 示例',
+        title: 'CRUD',
       }}
     >
       <ProTable<API.UserInfo>
@@ -174,6 +177,8 @@ const TableList: React.FC<unknown> = () => {
             success,
           };
         }}
+
+            // @ts-ignore
         columns={columns}
         rowSelection={{
           onChange: (_, selectedRows) => setSelectedRows(selectedRows),
@@ -217,6 +222,7 @@ const TableList: React.FC<unknown> = () => {
           }}
           rowKey="id"
           type="form"
+          // @ts-ignore
           columns={columns}
         />
       </CreateForm>

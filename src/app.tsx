@@ -6,24 +6,27 @@ import logo from './assets/logo.png';
 // app.ts
 import { RuntimeAntdConfig } from 'umi';
 import { theme } from 'antd';
-import RightContentRender from './components/layout/RightContentRender';
+import ToolBar from './components/action/UserAvator';
 import FooterRender from './components/layout/FooterRender';
 // import { WaterMark } from '@ant-design/pro-components';
 import { history } from '@umijs/max';
 import {User} from './types/user';
 import { getUserInfo } from './services/user/getUserInfro';
+
+//actionsRender
+import ToggleTheme from './components/action/ToggleTheme';
+
+
 type RuntimeAntdConfig = (memo: any) => any;
 export const antd: RuntimeAntdConfig = (memo: any) => {
   memo.theme ??= {};
-  memo.theme.algorithm = theme.defaultAlgorithm; // 配置 antd5 的预设 dark 算法
-
+  memo.theme.algorithm = theme.darkAlgorithm; // 配置 antd5 的预设 dark 算法
   memo.appConfig = {
     message: {
       // 配置 message 最大显示数，超过限制时，最早的消息会被自动关闭
       maxCount: 3,
     }
   }
-
   return memo;
 };
 
@@ -43,12 +46,11 @@ export async function getInitialState():Promise<User> {
     }
   
 }
-
 export const layout = () => {
   return {
     logo: logo,
     // favicons:'https://s.cn.bing.net/th?id=OJ.WNm0NiYXMw3UXA&qlt=80&o=6&dpr=1.8&pid=SANGAM',
-    actionsRender: () => [<RightContentRender />],
+    actionsRender: () => [<ToggleTheme />,<ToolBar />],
     // avatarProps: {
     //   src: initialState?.currentUser?.avatar,
     //   title: <AvatarName />,
@@ -56,18 +58,18 @@ export const layout = () => {
     //     return <AvatarDropdown>{avatarChildren}</AvatarDropdown>;
     //   },
     // },
-    footerRender: () => <FooterRender />,
+    // footerRender: () => <FooterRender />,
     // layout: 'side',
     // splitMenus: true,
     // loading:true,
-    menuHeaderRender: undefined,
-    waterMarkProps: { context: 'LB' },
+    // menuHeaderRender: undefined,
     menu: {
-      locale: false,
+      locale: true,
       type: 'sub'
     },
+    // headerContentRender: () => <h1>headerContentRender</h1>,
+    siderWidth:200,
     actionRender: () => <><h1>actionRender</h1></>,
-    
     layout: 'mix',
     contentWidth: 'Fluid',
     fixedHeader: false,

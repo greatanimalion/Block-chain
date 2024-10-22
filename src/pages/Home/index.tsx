@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
     <PageContainer ghost>
       <div className={styles.container}>
         <Guide name={trim(name)} />
-        <Button>{counter}</Button>
+        {/* <Button>{counter}</Button> */}
         {/* <Button onClick={increment}>Increment</Button> */}
        
       </div>
