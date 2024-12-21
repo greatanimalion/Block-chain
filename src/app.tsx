@@ -68,7 +68,6 @@ export const layout = () => {
     },
     // headerContentRender: () => <h1>headerContentRender</h1>,
     siderWidth:200,
-    actionRender: () => <><h1>actionRender</h1></>,
     layout: 'mix',
     contentWidth: 'Fluid',
     fixedHeader: false,

@@ -72,7 +72,7 @@ export default [
                 component: './PackageManage/scan',
             },
             {
-                name: '包装打印',
+                name: '包装补印',
                 path: '/packageManage/print',
                 component: './PackageManage/print',
 
