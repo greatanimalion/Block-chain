@@ -1,5 +1,4 @@
 // 运行时配置
-
 // 全局初始化数据配置，用于 Layout 用户信息和权限初始化
 // 更多信息见文档：https://umijs.org/docs/api/runtime-config#getinitialstate
 import logo from './assets/logo.png';
@@ -48,7 +47,7 @@ export async function getInitialState():Promise<User> {
 }
 export const layout = () => {
   return {
-    logo: logo,
+    logo: 'https://tse2-mm.cn.bing.net/th/id/OIP-C.JwBgHVTgKmmRE-POFJZv5QHaEE?rs=1&pid=ImgDetMain',
     // favicons:'https://s.cn.bing.net/th?id=OJ.WNm0NiYXMw3UXA&qlt=80&o=6&dpr=1.8&pid=SANGAM',
     actionsRender: () => [<ToggleTheme />,<ToolBar />],
     // avatarProps: {

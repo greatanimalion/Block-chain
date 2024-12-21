@@ -6,7 +6,7 @@ function content() {
   const user = useModel("@@initialState")
   return <>
     <div style={{ margin: "5px 0" }}>用户&nbsp;:&nbsp;<strong style={{margin: "0 5px"}}>{user.initialState?.name}</strong></div>
-    <div style={{ cursor: "pointer", color: 'red' }}>退出登录</div>
+    <div style={{ cursor: "pointer", color: 'red' }} onClick={() => {location.href = '/login'}}>退出登录</div>
   </>
 }
 export default function Settings() {

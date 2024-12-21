@@ -3,18 +3,13 @@ import { login } from '@/services/user/getUserInfro';
 import { useModel } from '@umijs/max';
 import { message } from 'antd';
 import { useState } from "react";
-declare module 'react' {
-  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
-    text?: string;
-  }
-}
+
 export default function Login() {
   const {initialState,setInitialState}=useModel('@@initialState')
-  const account = useState("")
-  const password = useState("")
+  const [account,setCount] = useState("lb")
+  const [password,setPassword] = useState("123")
   const loginA = (e: any) => {
-    e.preventDefault()
-    login(account[0], password[0]).then(async res => {
+    login(account, password).then(async res => {
       console.log(res)
       if (res.code === 200) {
        await setInitialState(res.data)
@@ -23,21 +18,17 @@ export default function Login() {
       else if (res.code === 400)message.error("用户名或密码错误")
     })
   }
-
-  // serveice.goods().then(res=>{
-  //   console.log(res)
-  // })
   return (
     <div className={styles.login} style={{zIndex:-1}}>
       <div className={styles.loginBox} >
         <h2 >Login</h2>
-        <form>
+        <div>
           <div className={styles.item}>
-            <input type="text" required id="account" onChange={(e) => { account[1](e.target.value) }} />
+            <input type="text" required id="account" value={account} onChange={(e) => { setCount(e.target.value) }} />
             <label htmlFor="account">用户名</label>
           </div>
           <div className={styles.item}>
-            <input type="password" required id="password" onChange={(e) => { password[1](e.target.value) }} />
+            <input type="password" required id="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
             <label htmlFor="password">密码</label>
           </div>
           <button className={styles.btn} type="submit" onClick={loginA}>登录
@@ -46,7 +37,7 @@ export default function Login() {
             <span></span>
             <span></span>
           </button>
-        </form>
+        </div>
       </div>
     </div>
   )
