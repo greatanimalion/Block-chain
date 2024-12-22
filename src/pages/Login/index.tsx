@@ -75,16 +75,21 @@ const iconStyles: CSSProperties = {
 const Page = () => {
   const [loginType, setLoginType] = useState<LoginType>('phone');
   const { token } = theme.useToken();
-  const {initialState,setInitialState}=useModel('@@initialState')
-  const loginA = ({username, password}:{username:string,password:string}) => {
-        login(username, password).then(async res => {
-          console.log(res)
-          if (res.code === 200) {
-           await setInitialState(res.data)
-            window.location.href = "/home"
-          }
-          else if (res.code === 400)message.error("用户名或密码错误")
-        })
+  const { initialState, setInitialState } = useModel('@@initialState')
+  const loginA = ({ username, password }: { username: string, password: string }) => {
+    // login(username, password).then(async res => {
+    //   console.log(res)
+    //   if (res.code === 200) {
+    //    await setInitialState(res.data)
+    //     window.location.href = "/home"
+    //   }
+    //   else if (res.code === 400)message.error("用户名或密码错误")
+    // })
+    setInitialState({
+      roles: 'admin',
+      name: 'admin'
+    })
+    window.location.href = "/home"
   }
   return (
     <div
@@ -239,7 +244,7 @@ const Page = () => {
                   />
                 ),
               }}
-            
+
               placeholder={'123'}
               rules={[
                 {
