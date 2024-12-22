@@ -58,6 +58,7 @@ import {
   ProFormCheckbox,
   ProFormText,
 } from '@ant-design/pro-components';
+import { useNavigate } from '@umijs/max';
 import { Link, useModel } from '@umijs/max';
 import { Button, Divider, Space, Tabs, message, theme } from 'antd';
 import type { CSSProperties } from 'react';
@@ -73,9 +74,10 @@ const iconStyles: CSSProperties = {
 };
 
 const Page = () => {
-  const [loginType, setLoginType] = useState<LoginType>('phone');
+  const [loginType, setLoginType] = useState<LoginType>('account');
   const { token } = theme.useToken();
   const { initialState, setInitialState } = useModel('@@initialState')
+  const navigate=useNavigate()
   const loginA = ({ username, password }: { username: string, password: string }) => {
     // login(username, password).then(async res => {
     //   console.log(res)
@@ -89,7 +91,7 @@ const Page = () => {
       roles: 'admin',
       name: 'admin'
     })
-    window.location.href = "/home"
+    navigate('/home')
   }
   return (
     <div
@@ -98,7 +100,7 @@ const Page = () => {
         height: '100vh',
       }}
     >
-      <LoginFormPage
+      <LoginFormPage 
         backgroundImageUrl="https://mdn.alipayobjects.com/huamei_gcee1x/afts/img/A*y0ZTS6WLwvgAAAAAAAAAAAAADml6AQ/fmt.webp"
         logo="https://github.githubassets.com/favicons/favicon.png"
         backgroundVideoUrl="https://gw.alipayobjects.com/v/huamei_gcee1x/afts/video/jXRBRK_VAwoAAAAAAAAAAAAAK4eUAQBr"
@@ -117,7 +119,7 @@ const Page = () => {
             backdropFilter: 'blur(4px)',
           },
           title: 'MES管理系统',
-          subTitle: '本项目在开发阶段，源码开方在github',
+          subTitle: '本项目在开发阶段，源码开源是个问题',
           action: (
             <Button
               size="large"
@@ -128,7 +130,7 @@ const Page = () => {
                 width: 120,
               }}
             >
-              <Link to={'https://github.com/greatanimalion/Block-chain'}>去看看</Link>
+              <Link to={'/'}>去看看</Link>
             </Button>
           ),
         }}
@@ -340,7 +342,7 @@ const Page = () => {
 
 export default () => {
   return (
-    <ProConfigProvider dark>
+    <ProConfigProvider >
       <Page />
     </ProConfigProvider>
   );
