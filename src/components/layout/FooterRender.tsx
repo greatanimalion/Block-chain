@@ -8,7 +8,7 @@ export default function FooterRender() {
                 links={[
                     {
                         key: '区块链',
-                        title: 'block-chain',
+                        title: 'mes',
                         href: 'https://github.com/greatanimalion/Block-chain',
                         blankTarget: true,
                     },

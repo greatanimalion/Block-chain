@@ -1,12 +1,12 @@
 // 运行时配置
 // 全局初始化数据配置，用于 Layout 用户信息和权限初始化
 // 更多信息见文档：https://umijs.org/docs/api/runtime-config#getinitialstate
-import logo from './assets/logo.png';
+// import logo from './assets/logo.png';
 // app.ts
 import { RuntimeAntdConfig } from 'umi';
 import { theme } from 'antd';
 import ToolBar from './components/action/UserAvator';
-import FooterRender from './components/layout/FooterRender';
+// import FooterRender from './components/layout/FooterRender';
 // import { WaterMark } from '@ant-design/pro-components';
 import { history } from '@umijs/max';
 import {User} from './types/user';

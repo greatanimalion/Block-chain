@@ -1,1 +1,1 @@
-export const DEFAULT_NAME = 'Block chain';
+export const DEFAULT_NAME = 'MES管理系统';

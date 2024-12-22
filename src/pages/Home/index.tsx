@@ -3,7 +3,6 @@ import { trim } from '@/utils/format';
 import { PageContainer } from '@ant-design/pro-components';
 import { useModel } from '@umijs/max';
 import styles from './index.less';
-import { Button } from 'antd';
 import { ProCard } from '@ant-design/pro-components';
 import { Statistic } from 'antd';
 import { useState } from 'react';
@@ -15,7 +14,7 @@ const HomePage: React.FC = () => {
   const [responsive, setResponsive] = useState(false);
   
   const { name } = useModel('global');
-  const {counter, increment} = useModel('counter');
+
   return (
     <PageContainer ghost>
       <div className={styles.container}>

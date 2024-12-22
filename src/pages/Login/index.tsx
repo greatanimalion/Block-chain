@@ -1,5 +1,5 @@
 // import styles from './index.module.css'
-// import { login } from '@/services/user/getUserInfro';
+import { login } from '@/services/user/getUserInfro';
 // import { useModel } from '@umijs/max';
 // import { message } from 'antd';
 // import { useState } from "react";
@@ -58,6 +58,7 @@ import {
   ProFormCheckbox,
   ProFormText,
 } from '@ant-design/pro-components';
+import { Link, useModel } from '@umijs/max';
 import { Button, Divider, Space, Tabs, message, theme } from 'antd';
 import type { CSSProperties } from 'react';
 import { useState } from 'react';
@@ -74,6 +75,17 @@ const iconStyles: CSSProperties = {
 const Page = () => {
   const [loginType, setLoginType] = useState<LoginType>('phone');
   const { token } = theme.useToken();
+  const {initialState,setInitialState}=useModel('@@initialState')
+  const loginA = ({username, password}:{username:string,password:string}) => {
+        login(username, password).then(async res => {
+          console.log(res)
+          if (res.code === 200) {
+           await setInitialState(res.data)
+            window.location.href = "/home"
+          }
+          else if (res.code === 400)message.error("用户名或密码错误")
+        })
+  }
   return (
     <div
       style={{
@@ -100,7 +112,7 @@ const Page = () => {
             backdropFilter: 'blur(4px)',
           },
           title: 'MES管理系统',
-          subTitle: '本项目在开发阶段',
+          subTitle: '本项目在开发阶段，源码开方在github',
           action: (
             <Button
               size="large"
@@ -111,10 +123,11 @@ const Page = () => {
                 width: 120,
               }}
             >
-              去看看
+              <Link to={'https://github.com/greatanimalion/Block-chain'}>去看看</Link>
             </Button>
           ),
         }}
+        onFinish={loginA}
         actions={
           <div
             style={{
@@ -205,7 +218,7 @@ const Page = () => {
                   />
                 ),
               }}
-              placeholder={'用户名: admin or user'}
+              placeholder={'lb'}
               rules={[
                 {
                   required: true,
@@ -226,7 +239,8 @@ const Page = () => {
                   />
                 ),
               }}
-              placeholder={'密码: ant.design'}
+            
+              placeholder={'123'}
               rules={[
                 {
                   required: true,
